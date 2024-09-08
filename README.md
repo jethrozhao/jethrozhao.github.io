@@ -2,7 +2,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jethro Zhao - Resume</title>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -205,7 +204,7 @@
         </header>
 
         <div class="contact-info">
-            <p>xiaoyaoj@usc.edu | 🇺🇸 US: +1 310 293 5738 | 🇭🇰 HK: +852 9191 1019</p>
+            <p>xiaoyaoj@usc.edu | 🇺🇸 US: +1 (310) 293 5738 | 🇭🇰 HK: +852 9191 1019</p>
             <p>48 Deep Water Bay Road, Hong Kong</p>
         </div>
 
