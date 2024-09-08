@@ -46,6 +46,11 @@
             color: var(--text-color);
             margin: 0;
         }
+
+        h1 a {
+          color: inherit;
+          text-decoration: none;
+        }
         
         h2 {
             font-family: 'Libre Baskerville', serif;
@@ -196,8 +201,8 @@
             <div class="header-main">
                 <h1>Jethro Zhao</h1>
                 <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/your-profile" target="_blank"><div class="social-icon"></div></a>
-                    <a href="https://github.com/your-profile" target="_blank"><div class="social-icon"></div></a>
+                    <a href="https://www.linkedin.com/in/jethro-zhao" target="_blank"><div class="social-icon"></div></a>
+                    <a href="https://github.com/jethrozhao" target="_blank"><div class="social-icon"></div></a>
                     <a href="https://twitter.com/your-profile" target="_blank"><div class="social-icon"></div></a>
                 </div>
             </div>
