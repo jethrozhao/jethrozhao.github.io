@@ -1,11 +1,9 @@
-# jethrozhao.github.io
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Resume</title>
+    <title> Jethro Zhao </title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
@@ -223,9 +221,11 @@
         <header>
             <h1>Your Name</h1>
             <div class="contact-info">
-                <span><i class="fas fa-envelope"></i> your.email@example.com</span>
-                <span><i class="fas fa-phone"></i> (123) 456-7890</span>
-                <span><i class="fas fa-map-marker-alt"></i> City, State</span>
+                <span><i class="fas fa-envelope"></i> xiaoyaoj@usc.edu</span>
+                <span><i class="fas fa-phone"></i> 🇺🇸 +1(310) 293-5738 </span>
+                <span><i class="fas fa-phone"></i> 🇭🇰 +852 9191 1019 </span>
+                <span><i class="fas fa-map-marker-alt"></i> Los Angeles, California </span>
+                <span><i class="fas fa-map-marker-alt"></i> Hong Kong, Hong Kong SAR </span>
             </div>
         </header>
 
