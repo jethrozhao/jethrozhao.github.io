@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Jethro Zhao </title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <title>Jethro Zhao - Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-        
         :root {
-            --primary-color: #6C63FF;
-            --secondary-color: #2C3E50;
+            --primary-color: #2C3E50;
+            --secondary-color: #34495E;
             --background-color: #F8F9FA;
-            --text-color: #333;
-            --timeline-color: #E0E0E0;
+            --text-color: #333333;
+            --accent-color: #3498DB;
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--background-color);
@@ -26,28 +24,29 @@
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
         }
         
         header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
         
         h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
+            font-weight: 600;
             color: var(--primary-color);
             margin-bottom: 10px;
         }
         
         h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--secondary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-            margin-top: 40px;
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 5px;
+            margin-top: 30px;
         }
         
         .contact-info {
@@ -55,113 +54,46 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-        }
-        
-        .contact-info span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            font-size: 0.9rem;
         }
         
         .section {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .entry {
+            margin-bottom: 20px;
+        }
+        
+        .entry-content {
+            padding: 15px;
             background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         
-        /* New styles for the enhanced experience section */
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: var(--timeline-color);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
-        }
-        
-        .job {
-            padding: 10px 40px;
-            position: relative;
-            background-color: inherit;
-            width: calc(50% - 40px);
-            transition: all 0.3s ease;
-        }
-        
-        .job:nth-child(odd) {
-            left: 0;
-        }
-        
-        .job:nth-child(even) {
-            left: 50%;
-        }
-        
-        .job::after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            right: -17px;
-            background-color: var(--background-color);
-            border: 4px solid var(--primary-color);
-            top: 15px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-        
-        .job:nth-child(even)::after {
-            left: -16px;
-        }
-        
-        .job-content {
-            padding: 20px 30px;
-            background-color: white;
-            position: relative;
-            border-radius: 6px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .job-title {
+        .entry-title {
             font-weight: 600;
             color: var(--primary-color);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 5px;
         }
         
-        .company {
+        .entry-org {
             font-weight: 400;
             color: var(--secondary-color);
             margin-bottom: 5px;
         }
         
-        .date {
-            font-size: 0.9rem;
-            color: #666;
+        .entry-date {
+            font-size: 0.85rem;
+            color: var(--text-color);
+            opacity: 0.8;
             margin-bottom: 10px;
         }
         
-        .job-description {
-            margin-top: 15px;
-            display: none;
-        }
-        
-        .job-content:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-        }
-        
-        .job-content:hover .job-description {
-            display: block;
+        .entry-description {
+            font-size: 0.9rem;
         }
         
         .skills {
@@ -171,47 +103,24 @@
         }
         
         .skill {
-            background-color: var(--primary-color);
+            background-color: var(--accent-color);
             color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: transform 0.2s;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
         }
         
-        .skill:hover {
-            transform: translateY(-3px);
-        }
-        
-        @media screen and (max-width: 768px) {
-            .timeline::after {
-                left: 31px;
-            }
-            
-            .job {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .job::after {
-                left: 15px;
-            }
-            
-            .job:nth-child(even) {
-                left: 0%;
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 20px 10px;
             }
             
             h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             
             h2 {
-                font-size: 1.8rem;
-            }
-            
-            .section {
-                padding: 20px;
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -219,64 +128,55 @@
 <body>
     <div class="container">
         <header>
-            <h1>Your Name</h1>
+            <h1>Jethro Zhao</h1>
             <div class="contact-info">
-                <span><i class="fas fa-envelope"></i> xiaoyaoj@usc.edu</span>
-                <span><i class="fas fa-phone"></i> 🇺🇸 +1(310) 293-5738 </span>
-                <span><i class="fas fa-phone"></i> 🇭🇰 +852 9191 1019 </span>
-                <span><i class="fas fa-map-marker-alt"></i> Los Angeles, California </span>
-                <span><i class="fas fa-map-marker-alt"></i> Hong Kong, Hong Kong SAR </span>
+                <span>xiaoyaoj@usc.edu</span>
+                <span> 🇺🇸US: +1 310 293 5738 | 🇭🇰HK: +852 9191 1019</span>
+                <span>48 Deep Water Bay Road, Hong Kong</span>
             </div>
         </header>
 
-        <section class="section" id="summary">
-            <h2>Professional Summary</h2>
-            <p>A dynamic and innovative professional with a passion for [your field]. Combining creativity with analytical skills to drive results and push boundaries in [specific area of expertise].</p>
-        </section>
-
         <section class="section" id="experience">
             <h2>Work Experience</h2>
-            <div class="timeline">
-                <div class="job">
-                    <div class="job-content">
-                        <p class="job-title">Senior Developer</p>
-                        <p class="company">Tech Innovators Inc.</p>
-                        <p class="date">Jan 2020 - Present</p>
-                        <div class="job-description">
-                            <ul>
-                                <li>Spearheaded the development of a groundbreaking AI-powered analytics platform</li>
-                                <li>Led a team of 5 developers, increasing productivity by 30% through agile methodologies</li>
-                                <li>Implemented machine learning algorithms to improve data processing efficiency by 50%</li>
-                            </ul>
-                        </div>
+            <div class="entry">
+                <div class="entry-content">
+                    <p class="entry-title">Junior Reporter & Social Media Manager</p>
+                    <p class="entry-org">South China Morning Post</p>
+                    <p class="entry-date">June 2021 - July 2021</p>
+                    <div class="entry-description">
+                        <ul>
+                            <li>Conducted interviews & co-wrote 3 articles</li>
+                            <li>Compiled reader responses, movie and event news for daily paper</li>
+                            <li>Managed Instagram & grew following 14%</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="job">
-                    <div class="job-content">
-                        <p class="job-title">Full Stack Developer</p>
-                        <p class="company">Digital Solutions Co.</p>
-                        <p class="date">Mar 2017 - Dec 2019</p>
-                        <div class="job-description">
-                            <ul>
-                                <li>Developed and maintained 10+ web applications using React and Node.js</li>
-                                <li>Implemented CI/CD pipelines, reducing deployment time by 50%</li>
-                                <li>Optimized database queries, improving application response time by 40%</li>
-                            </ul>
-                        </div>
+            </div>
+            <div class="entry">
+                <div class="entry-content">
+                    <p class="entry-title">AI Software Intern</p>
+                    <p class="entry-org">New Vision Asset Management Ltd</p>
+                    <p class="entry-date">June 2023 - August 2023</p>
+                    <div class="entry-description">
+                        <ul>
+                            <li>Developed a program using LLMs to retrieve and analyse equity research reports</li>
+                            <li>Generated potential investment opportunities under current market conditions</li>
+                            <li>Saved analysts significant time in reading equity research reports</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="job">
-                    <div class="job-content">
-                        <p class="job-title">Junior Web Developer</p>
-                        <p class="company">WebCraft Studios</p>
-                        <p class="date">Jun 2015 - Feb 2017</p>
-                        <div class="job-description">
-                            <ul>
-                                <li>Assisted in the development of responsive websites for various clients</li>
-                                <li>Collaborated with designers to implement pixel-perfect UI designs</li>
-                                <li>Learned and applied best practices in web accessibility and SEO</li>
-                            </ul>
-                        </div>
+            </div>
+            <div class="entry">
+                <div class="entry-content">
+                    <p class="entry-title">Data Science Intern</p>
+                    <p class="entry-org">Animoca Brands Limited</p>
+                    <p class="entry-date">June 2024 - August 2024</p>
+                    <div class="entry-description">
+                        <ul>
+                            <li>Designed and implemented initial dashboard and database for emerging projects using SQL</li>
+                            <li>Communicated with 4 prospective clients and partners to design and conduct experiments</li>
+                            <li>Performed data wrangling and analysed experiment data using matplotlib</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -284,29 +184,86 @@
 
         <section class="section" id="education">
             <h2>Education</h2>
-            <div class="education">
-                <p class="degree">Master of Science in Computer Science</p>
-                <p class="school">Tech University</p>
-                <p class="date">Graduated 2017</p>
+            <div class="entry">
+                <div class="entry-content">
+                    <p class="entry-title">Bachelor of Science, Artificial Intelligence for Business</p>
+                    <p class="entry-org">University of Southern California, Marshall School of Business | Viterbi School of Engineering</p>
+                    <p class="entry-date">August 2023 - Present</p>
+                    <div class="entry-description">
+                        <p>GPA: 3.8</p>
+                        <p>Pursuing a dual degree program combining business acumen with cutting-edge AI technology</p>
+                    </div>
+                </div>
             </div>
-            <div class="education">
-                <p class="degree">Bachelor of Science in Software Engineering</p>
-                <p class="school">State University</p>
-                <p class="date">Graduated 2015</p>
+            <div class="entry">
+                <div class="entry-content">
+                    <p class="entry-title">Entrepreneurship And Innovation: Changing The World Via Venture Creation</p>
+                    <p class="entry-org">Columbia University</p>
+                    <p class="entry-date">June 2021 - August 2021</p>
+                    <div class="entry-description">
+                        <p>Intensive summer program focused on entrepreneurship and innovation strategies</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="activities">
+            <h2>Extra-Curricular Activities</h2>
+            <div class="entry">
+                <div class="entry-content">
+                    <p class="entry-title">Founder, Co-ordinator</p>
+                    <p class="entry-org">Project Reboot</p>
+                    <p class="entry-date">August 2021 - June 2023</p>
+                    <div class="entry-description">
+                        <ul>
+                            <li>Established program and managed 16 people</li>
+                            <li>Collected and recycled 25kg of e-waste</li>
+                            <li>Donated 243 calculators to children in Cambodia</li>
+                            <li>Raised $2,000 USD+</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="entry">
+                <div class="entry-content">
+                    <p class="entry-title">Treasurer, Marketing Director</p>
+                    <p class="entry-org">Project Privates</p>
+                    <p class="entry-date">October 2021 - June 2023</p>
+                    <div class="entry-description">
+                        <ul>
+                            <li>Sold merchandise to fundraise $3,000 USD for the Hong Kong cancer foundation</li>
+                            <li>Promoted men's health awareness in high schools</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="entry">
+                <div class="entry-content">
+                    <p class="entry-title">Founder, Director</p>
+                    <p class="entry-org">Bloom Fashion</p>
+                    <p class="entry-date">January 2022 - February 2023</p>
+                    <div class="entry-description">
+                        <ul>
+                            <li>Founded fashion advisory startup for Hong Kong men</li>
+                            <li>Managed 8-member team</li>
+                            <li>Coordinated company operations</li>
+                            <li>Established communications with 3 clothing brands</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section class="section" id="skills">
             <h2>Skills</h2>
             <div class="skills">
-                <span class="skill">JavaScript</span>
-                <span class="skill">React</span>
-                <span class="skill">Node.js</span>
+                <span class="skill">Java</span>
                 <span class="skill">Python</span>
-                <span class="skill">Machine Learning</span>
-                <span class="skill">AWS</span>
-                <span class="skill">Docker</span>
-                <span class="skill">Git</span>
+                <span class="skill">C++</span>
+                <span class="skill">R</span>
+                <span class="skill">SQL</span>
+                <span class="skill">English (Bilingual)</span>
+                <span class="skill">Chinese (Bilingual)</span>
             </div>
         </section>
     </div>
