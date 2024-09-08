@@ -213,7 +213,6 @@
 
         <div class="contact-info">
             <p>xiaoyaoj@usc.edu | 🇺🇸 US: +1 (310) 293 5738 | 🇭🇰 HK: +852 9191 1019</p>
-            <p>48 Deep Water Bay Road, Hong Kong</p>
         </div>
 
         <section class="intro">
