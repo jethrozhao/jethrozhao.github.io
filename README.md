@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jethro Zhao - Resume</title>
+    <style>
+        header {
+            display: none;
+        }
+    </style>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -14,9 +19,6 @@
             --light-gray: #E5E5E5;
         }
         
-        header {
-          display: none;
-        }
                 
         body {
             font-family: 'Inter', sans-serif;
