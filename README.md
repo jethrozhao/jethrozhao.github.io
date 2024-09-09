@@ -205,7 +205,7 @@
                 <h1>Jethro Zhao</h1>
                 <div class="social-icons">
                     <a href="https://www.linkedin.com/in/jethro-zhao" target="_blank">
-                        <img src="linkedin.png" alt="LinkedIn" class="social-icon">
+                        <img src="icon/linkedin.png" alt="LinkedIn" class="social-icon">
                     </a>
                     <a href="https://github.com/jethrozhao" target="_blank"><div class="social-icon"></div></a>
                     <a href="https://twitter.com/your-profile" target="_blank"><div class="social-icon"></div></a>
