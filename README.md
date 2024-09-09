@@ -207,8 +207,12 @@
                     <a href="https://www.linkedin.com/in/jethro-zhao" target="_blank">
                         <img src="icon/linkedin.png" alt="LinkedIn" class="social-icon">
                     </a>
-                    <a href="https://github.com/jethrozhao" target="_blank"><div class="social-icon"></div></a>
-                    <a href="https://twitter.com/your-profile" target="_blank"><div class="social-icon"></div></a>
+                    <a href="https://github.com/jethrozhao" target="_blank">
+                        <img src="icon/github.png" alt="GitHub" class="social-icon">
+                    </a>
+                    <a href="https://www.instagram.com/by.jethrozhao/" target="_blank">
+                        <img src="icon/instagram.png" alt="Instagram" class="social-icon">
+                    </a>
                 </div>
             </div>
         </header>
