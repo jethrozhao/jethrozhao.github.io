@@ -7,13 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --background-color: #F5F5DC;
+            --background-color: #F5F4F1;
             --text-color: #333333;
             --accent-color: #4A7B3F;
             --light-gray: #E5E5E5;
         }
         
-                
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
@@ -26,33 +25,44 @@
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
         
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
+            text-align: center;
             margin-bottom: 20px;
         }
         
         .header-main {
             display: flex;
-            align-items: baseline;
+            flex-direction: column;
+            align-items: center;
             gap: 20px;
         }
         
         h1 {
             font-family: 'Libre Baskerville', serif;
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
             color: var(--text-color);
             margin: 0;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background-color: var(--accent-color);
         }
 
         h1 a {
-          color: inherit;
-          text-decoration: none;
+            color: inherit;
+            text-decoration: none;
         }
         
         h2 {
@@ -84,10 +94,13 @@
         .contact-info {
             font-size: 0.9rem;
             margin-top: 10px;
+            text-align: center;
         }
         
         .intro {
             margin-bottom: 30px;
+            text-align: center;
+            font-style: italic;
         }
         
         .section {
@@ -149,7 +162,7 @@
         }
         
         .entry:hover .entry-details {
-            max-height: 300px; /* Adjust this value based on your content */
+            max-height: 300px;
         }
         
         .projects {
@@ -168,6 +181,7 @@
         .project-title {
             font-weight: 600;
             margin-bottom: 5px;
+            color: var(--accent-color);
         }
         
         .project-description {
@@ -176,20 +190,20 @@
         
         @media screen and (max-width: 600px) {
             .container {
-                padding: 10px;
+                padding: 20px 10px;
             }
             
             h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             h2 {
                 font-size: 1.5rem;
             }
             
-            header, .header-main {
+            .header-main {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
             }
             
             .social-icons {
