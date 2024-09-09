@@ -5,21 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jethro Zhao - Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         header {
             display: none;
         }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --background-color: #F5F5DC;
-            --text-color: #333333;
-            --accent-color: #4A7B3F;
-            --light-gray: #E5E5E5;
-        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px 20px; /* Increased top padding */
+        }        
         
-                
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
@@ -33,7 +29,7 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-        }
+        } 
         
         header {
             display: flex;
