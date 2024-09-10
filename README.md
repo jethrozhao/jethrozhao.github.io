@@ -243,7 +243,9 @@
             <h2>Work Experience</h2>
             <div class="entry">
                 <div class="entry-header">
-                    <div class="entry-logo"></div>
+                    <div class="entry-logo">
+                        <img src="icon/animocabrands.jpg" alt="AnimocaBrands" class="entry-logo">
+                    </div>
                     <div class="entry-content">
                         <p class="entry-title">Data Science Intern</p>
                         <p class="entry-org">Animoca Brands Limited</p>
@@ -278,7 +280,9 @@
             </div>
             <div class="entry">
                 <div class="entry-header">
-                    <div class="entry-logo"></div>
+                    <div class="entry-logo">
+                         <img src="icon/scmp.png" alt="SCMP" class="entry-logo">
+                    </div>
                     <div class="entry-content">
                         <p class="entry-title">Junior Reporter & Social Media Manager</p>
                         <p class="entry-org">South China Morning Post</p>
@@ -299,7 +303,9 @@
             <h2>Education</h2>
             <div class="entry">
                 <div class="entry-header">
-                    <div class="entry-logo"></div>
+                    <div class="entry-logo">
+                        <img src="icon/USC.png" alt="USC" class="entry-logo">
+                    </div>
                     <div class="entry-content">
                         <p class="entry-title">Bachelor of Science, Artificial Intelligence for Business</p>
                         <p class="entry-org">University of Southern California</p>
@@ -313,7 +319,9 @@
             </div>
             <div class="entry">
                 <div class="entry-header">
-                    <div class="entry-logo"></div>
+                    <div class="entry-logo">
+                         <img src="icon/columbia.jpeg" alt="Columbia" class="entry-logo">
+                    </div>
                     <div class="entry-content">
                         <p class="entry-title">Entrepreneurship And Innovation: Changing The World Via Venture Creation</p>
                         <p class="entry-org">Columbia University</p>
