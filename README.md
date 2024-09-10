@@ -244,7 +244,7 @@
             <div class="entry">
                 <div class="entry-header">
                     <div class="entry-logo">
-                        <img src="icon/animocabrands.jpg" alt="AnimocaBrands" class="entry-logo">
+                        <img src="icon/animocabrands.png" alt="AnimocaBrands" class="entry-logo">
                     </div>
                     <div class="entry-content">
                         <p class="entry-title">Data Science Intern</p>
