@@ -260,7 +260,9 @@
             </div>
             <div class="entry">
                 <div class="entry-header">
-                    <div class="entry-logo"></div>
+                    <div class="entry-logo">
+                        <img src="icon/newvision.jpeg" alt="NewVision" class="entry-logo">
+                    </div>
                     <div class="entry-content">
                         <p class="entry-title">AI Software Intern</p>
                         <p class="entry-org">New Vision Asset Management Ltd</p>
