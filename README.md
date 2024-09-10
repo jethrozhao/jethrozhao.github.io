@@ -281,7 +281,7 @@
             <div class="entry">
                 <div class="entry-header">
                     <div class="entry-logo">
-                         <img src="icon/scmp.png" alt="SCMP" class="entry-logo">
+                         <img src="icon/scmp.jpg" alt="SCMP" class="entry-logo">
                     </div>
                     <div class="entry-content">
                         <p class="entry-title">Junior Reporter & Social Media Manager</p>
