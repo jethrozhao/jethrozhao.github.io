@@ -155,11 +155,14 @@
         }
         .experience-details {
             flex-grow: 1;
+            min-width: 0; /* This allows text to wrap properly */
         }
         .experience-title {
             font-size: 1.1rem;
             font-weight: 600;
             margin: 0;
+            white-space: normal; /* Allows wrapping */
+            word-wrap: break-word; /* Breaks long words if necessary */
         }
         .experience-period {
             font-size: 0.9rem;
@@ -213,23 +216,26 @@
         <section id="experience">
             <h2>Experience</h2>
             <div class="experience-item">
-                <img src="/placeholder.svg?height=48&width=48" alt="Animoca Brands logo" class="experience-logo">
+                <img src="https://github.com/jethrozhao/jethrozhao.github.io/blob/23959564492695a4ed470994e00e87af50031ef1/icon/animoca.jpg" alt="Animoca Brands logo" class="experience-logo">
                 <div class="experience-details">
-                    <h3 class="experience-title">Data Science Intern @ Animoca Brands Limited</h3>
+                    <h3 class="experience-title">Data Science Intern</h3>
+                    <p class="experience-company">Animoca Brands Limited</p>
                 </div>
                 <div class="experience-period">June 2024 - August 2024</div>
             </div>
             <div class="experience-item">
-                <img src="/placeholder.svg?height=48&width=48" alt="New Vision Asset Management logo" class="experience-logo">
+                <img src="https://github.com/jethrozhao/jethrozhao.github.io/blob/3e423ce644009b4774e41ca484aefc14b6ba57f6/icon/new%20vision%20tech.jpeg" class="experience-logo">
                 <div class="experience-details">
-                    <h3 class="experience-title">AI Software Intern @ New Vision Asset Management Limited</h3>
+                    <h3 class="experience-title">AI Software Intern</h3>
+                    <p class="experience-company">New Vision Asset Management Limited</p>
                 </div>
                 <div class="experience-period">June 2023 - August 2023</div>
             </div>
             <div class="experience-item">
-                <img src="/placeholder.svg?height=48&width=48" alt="South China Morning Post logo" class="experience-logo">
+                <img src="https://github.com/jethrozhao/jethrozhao.github.io/blob/3e423ce644009b4774e41ca484aefc14b6ba57f6/icon/scmp.jpg" alt="South China Morning Post logo" class="experience-logo">
                 <div class="experience-details">
-                    <h3 class="experience-title">Junior Reporter & Social Media Manager @ South China Morning Post</h3>
+                    <h3 class="experience-title">Junior Reporter & Social Media Manager</h3>
+                    <p class="experience-company">South China Morning Post</p>
                 </div>
                 <div class="experience-period">June 2021 - July 2021</div>
             </div>
