@@ -48,13 +48,13 @@
             color: var(--accent-color);
         }
         main {
-            padding-top: 80px; /* Increased padding to prevent clipping */
+            padding-top: 100px;
         }
         h1, h2 {
             font-family: Georgia, serif;
         }
         h1 {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             margin-bottom: 0.5rem;
         }
         h2 {
@@ -66,7 +66,7 @@
         .card {
             background-color: var(--card-bg);
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             transition: transform 0.3s ease;
@@ -90,8 +90,8 @@
             color: var(--accent-color);
         }
         .icon {
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
             margin-right: 0.5rem;
         }
         footer {
@@ -103,7 +103,7 @@
         }
         .social-links {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 1rem;
             margin-top: 1rem;
         }
@@ -123,7 +123,48 @@
             transition: max-height 0.3s ease-out;
         }
         #about {
-            padding-top: 2rem; /* Added padding to create space between nav and name card */
+            padding-top: 2rem;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .skill-item {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        .experience-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .experience-logo {
+            width: 48px;
+            height: 48px;
+            margin-right: 1rem;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        .experience-details {
+            flex-grow: 1;
+        }
+        .experience-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .experience-period {
+            font-size: 0.9rem;
+            color: #6c757d;
+            text-align: right;
         }
     </style>
 </head>
@@ -133,8 +174,7 @@
             <nav>
                 <a href="#about" class="active">About</a>
                 <a href="#experience">Experience</a>
-                <a href="#education">Education</a>
-                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
             </nav>
         </div>
     </header>
@@ -149,14 +189,14 @@
                         <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                         xiaoyaoj@usc.edu
                     </a>
-                    <a href="tel:+13102235738">
+                    <a href="tel:+13102935738">
                         <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                         +1 310 293 5738
                     </a>
                 </div>
             </div>
-            <p> Hey there 👋 I'm Jethro, an AI and data science enthusiast with a passion for fashion and entrepreneurship. </p>
-            <p> Currently pursuing a Bachelor's degree in Artificial Intelligence for Business at the University of Southern California.</p>
+            <p>Hey there 👋 I'm Jethro, an AI and data science enthusiast with a passion for fashion and entrepreneurship.</p>
+            <p>Currently pursuing a Bachelor's degree in Artificial Intelligence for Business at the University of Southern California.</p>
             <div class="social-links">
                 <a href="https://github.com/jethrozhao" target="_blank" rel="noopener noreferrer">
                     <svg class="icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
@@ -172,51 +212,50 @@
 
         <section id="experience">
             <h2>Experience</h2>
-            <div class="card collapsible">
-                <h3>Data Science Intern</h3>
-                <p>Animoca Brands Limited | June 2024 - August 2024</p>
-                <div class="content">
-                    <p>Designed and implemented initial weekly dashboard and data lake for 3 emerging Web3 projects for existing user bases of over 80 million. Facilitated user research to define product requirements and features. Communicated with 4 prospective clients and partners. Performed data wrangling to clean 8 datasets and analysed experiment data.</p>
+            <div class="experience-item">
+                <img src="/placeholder.svg?height=48&width=48" alt="Animoca Brands logo" class="experience-logo">
+                <div class="experience-details">
+                    <h3 class="experience-title">Data Science Intern @ Animoca Brands Limited</h3>
                 </div>
+                <div class="experience-period">June 2024 - August 2024</div>
             </div>
-            <div class="card collapsible">
-                <h3>AI Software Intern</h3>
-                <p>New Vision Asset Management Limited | June 2023 - August 2023</p>
-                <div class="content">
-                    <p>Identified key user pain points for company analysts and developed a program using LLMs to streamline equity research analysis. Performed regular interviews with analysts to evaluate requirements and acquire feedback throughout iteration process. Saved analysts time otherwise spent reading equity research reports, resulting in an estimated 8% increase in workflow efficiency.</p>
+            <div class="experience-item">
+                <img src="/placeholder.svg?height=48&width=48" alt="New Vision Asset Management logo" class="experience-logo">
+                <div class="experience-details">
+                    <h3 class="experience-title">AI Software Intern @ New Vision Asset Management Limited</h3>
                 </div>
+                <div class="experience-period">June 2023 - August 2023</div>
             </div>
-            <div class="card collapsible">
-                <h3>Junior Reporter & Social Media Manager</h3>
-                <p>South China Morning Post | June 2021 - July 2021</p>
-                <div class="content">
-                    <p>Conducted interviews & co-wrote 3 articles on upcoming video games. Compiled reader responses, game and event news for daily paper. Managed Instagram & grew following 14%.</p>
+            <div class="experience-item">
+                <img src="/placeholder.svg?height=48&width=48" alt="South China Morning Post logo" class="experience-logo">
+                <div class="experience-details">
+                    <h3 class="experience-title">Junior Reporter & Social Media Manager @ South China Morning Post</h3>
                 </div>
+                <div class="experience-period">June 2021 - July 2021</div>
             </div>
         </section>
 
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="card collapsible">
-                <h3>Bloom Fashion</h3>
-                <p>Founder, Director | January 2022 - Present</p>
-                <div class="content">
-                    <p>Building an integrated retail platform with augmented reality based virtual try-on experiences. Spearheaded market research and user interviews to identify pain points in men's fashion retail. Founded fashion advisory startup for Hong Kong men. Led cross- functional team of 8 members, including designers, developers, and marketing specialists. Coordinating company operations and established communications with 3 clothing brands.</p>
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="card">
+                <h3>Technical Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">Java</span>
+                    <span class="skill-item">C++</span>
+                    <span class="skill-item">SQL</span>
+                    <span class="skill-item">Pandas</span>
+                    <span class="skill-item">NumPy</span>
+                    <span class="skill-item">TensorFlow</span>
+                    <span class="skill-item">Langchain</span>
+                    <span class="skill-item">OpenCV</span>
+                    <span class="skill-item">React</span>
+                    <span class="skill-item">Node.js</span>
+                    <span class="skill-item">GraphQL</span>
+                    <span class="skill-item">Matplotlib</span>
+                    <span class="skill-item">AWS</span>
                 </div>
-            </div>
-            <div class="card collapsible">
-                <h3>Project Privates</h3>
-                <p>Treasurer, Marketing Director | October 2021 - June 2023</p>
-                <div class="content">
-                    <p>Sold merchandise to fundraise $3,000 USD for the Hong Kong cancer foundation to promote men's health awareness in highschools.</p>
-                </div>
-            </div>
-            <div class="card collapsible">
-                <h3>Project Reboot</h3>
-                <p>Founder, Co-ordinator | August 2021 - June 2023</p>
-                <div class="content">
-                    <p>Established program and led 16 people. Collected and recycled 25kg of e-waste. Over 30% increase in community e-waste recycling by volume. 17% increase in recycling volume year over year. Donated 243 calculators to children in Cambodia. Annually raised $2,000 USD+ in refurbished electronics auction.</p>
-                </div>
+            
             </div>
         </section>
     </main>
