@@ -3,177 +3,355 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jethro Zhao - Personal Website</title>
+    <title>Jethro Zhao | AI & Data Science</title>
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Fonts -->
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f5f2eb;
-            --text-color: #1a2721;
-            --accent-color: #3B2900;
-            --card-bg: #ffffff;
+            --dark-bg: #0A0A0A;
+            --light-bg: #f5f2eb;
+            --text-color: #F5F5F5;
+            --secondary-color: #858585;
+            --hover-color: #F1F0F0;
+            --light-text: #1a2721;
         }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
+        
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            cursor: none;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        header {
-            background-color: var(--bg-color);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        nav {
-            display: flex;
-            justify-content: flex-end;
-            padding: 1rem 0;
-        }
-        nav a {
+        
+        body {
+            font-family: 'Clash Display', sans-serif;
+            background-color: var(--dark-bg);
             color: var(--text-color);
-            text-decoration: none;
-            margin-left: 1.5rem;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Loader */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .counter {
+            font-size: 6vw;
             font-weight: 500;
-            transition: color 0.3s ease;
         }
-        nav a:hover, nav a.active {
-            color: var(--accent-color);
-        }
-        main {
-            padding-top: 100px;
-        }
-        h1, h2 {
-            font-family: Georgia, serif;
-        }
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-        }
-        h2 {
-            font-size: 2rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-        }
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--text-color);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
             transition: transform 0.3s ease;
         }
-        .card:hover {
-            transform: translateY(-5px);
+
+        .cursor.hover {
+            transform: scale(1.5);
+            background-color: var(--text-color);
         }
-        .contact-info {
+
+        /* Navigation */
+        .nav-header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: 2.5rem 3rem;
+            z-index: 100;
             display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 3rem;
         }
-        .contact-info a {
+
+        .nav-header a {
             color: var(--text-color);
             text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 0.01em;
+            font-weight: 400;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-header a:hover {
+            opacity: 1;
+        }
+
+        .logo {
+            position: fixed;
+            top: 2.5rem;
+            left: 3rem;
+            font-size: 1.25rem;
+            font-weight: 500;
+            z-index: 100;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 0 3rem;
         }
-        .contact-info a:hover {
-            color: var(--accent-color);
+
+        .hero-title {
+            display: flex;
+            align-items: center;
+            gap: 2vw;
+            font-size: 13vw;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            transform: translateY(50px);
         }
-        .icon {
-            width: 30px;
-            height: 30px;
-            margin-right: 0.5rem;
+
+        .image-container {
+            width: 13vw;
+            height: 13vw;
+            position: relative;
+            overflow: hidden;
         }
-        footer {
-            background-color: var(--accent-color);
-            color: var(--bg-color);
-            text-align: center;
-            padding: 1rem 0;
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.1);
+            transition: transform 0.5s ease;
+        }
+
+        .image-container:hover .profile-image {
+            transform: scale(1);
+        }
+
+        /* Tags */
+        .tag-container {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 3rem;
+            right: 3rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .tag {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .tag-line {
+            width: 2rem;
+            height: 1px;
+            background-color: currentColor;
+            opacity: 0.4;
+        }
+
+        /* Content Sections */
+        .section {
+            min-height: 50vh;
+            padding: 8rem 3rem;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .light-section {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+
+        .section-header {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 6rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-number {
+            font-size: 13px;
+            opacity: 0.6;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .section-content {
+            font-size: 4vw;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+
+        .section-subcontent {
+            font-size: 2.5vw;
+            opacity: 0.6;
             margin-top: 2rem;
         }
-        .social-links {
-            display: flex;
-            justify-content: flex-start;
-            gap: 1rem;
-            margin-top: 1rem;
+
+            /* Work Experience */
+        .work-container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .social-links a {
-            color: var(--text-color);
-            text-decoration: none;
-        }
-        .social-links a:hover {
-            color: var(--accent-color);
-        }
-        .collapsible {
-            cursor: pointer;
-        }
-        .content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        #about {
-            padding-top: 2rem;
-        }
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        .skill-item {
-            background-color: var(--accent-color);
-            color: var(--bg-color);
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.9em;
-        }
-        .experience-item {
+
+        .work-item {
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background-color: #ffffff;
+            gap: 32px;
+            padding: 32px;
+            background: var(--light-bg);
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
             border-radius: 8px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .experience-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: adds a slightly stronger shadow on hover */
+
+        .work-item:hover {
+            background: #FFFFFF;
+            transform: translateX(8px);
         }
-        .experience-logo {
-            width: 48px;
-            height: 48px;
-            margin-right: 1rem;
-            border-radius: 8px;
+
+        .work-logo {
+            width: 80px;
+            height: 80px;
             object-fit: cover;
+            border-radius: 8px;
         }
-        .experience-details {
-            flex-grow: 1;
-            min-width: 0; /* This allows text to wrap properly */
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+            margin-top: 6rem;
         }
-        .experience-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin: 0;
-            white-space: normal; /* Allows wrapping */
-            word-wrap: break-word; /* Breaks long words if necessary */
+
+        .gallery-item {
+            grid-column: span 4;
+            aspect-ratio: 1;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
         }
-        .experience-period {
-            font-size: 0.9rem;
-            color: #6c757d;
-            text-align: right;
+
+        .gallery-item.wide {
+            grid-column: span 8;
         }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .contact-info a {
+            color: currentColor;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            opacity: 1;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 8rem 1rem;
+            background: var(--dark-bg);
+        }
+
+        .footer-logo {
+            font-size: 10vw;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 0rem;
+            font-size: 13px;
+            opacity: 0.6;
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(255,255,255,0.1);
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--text-color);
+            width: 0;
+            transition: width 0.1s ease;
+        }
+
         .experience-link {
             text-decoration: none;
             color: inherit;
@@ -183,162 +361,379 @@
         .experience-link:hover {
             transform: translateY(-2px);
         }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 18vw;
+                flex-direction: column;
+                gap: 4vh;
+            }
+
+            .image-container {
+                width: 50vw;
+                height: 50vw;
+            }
+
+            .section-header {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .section-content {
+                font-size: 8vw;
+            }
+
+            .section-subcontent {
+                font-size: 5vw;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item, .gallery-item.wide {
+                grid-column: span 1;
+            }
+
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#about" class="active">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#skills">Skills</a>
-            </nav>
-        </div>
-    </header>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="counter">0%</div>
+    </div>
 
-    <main class="container">
-        <section id="about">
-            <div class="card">
-                <h1>jethro zhao | 赵小尧</h1>
-                <p>Software Engineer and Fullstack Developer</p>
-                <div class="contact-info">
-                    <a href="mailto:xiaoyaoj@usc.edu">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        xiaoyaoj@usc.edu
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress">
+        <div class="progress-bar"></div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="logo">J</div>
+    <nav class="nav-header">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <h1 class="hero-title">
+            <span>JETHRO</span>
+            <!-- <div class="image-container">
+                <img src="https://raw.githubusercontent.com/jethrozhao/jethrozhao.github.io/main/prof.JPG" alt="Profile" class="profile-image">
+            </div> -->
+            <!-- <span>TH</span>
+            <span>RO</span> -->
+        </h1>
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.46/build/spline-viewer.js"></script>
+        <spline-viewer url="https://prod.spline.design/7duBqYIybZpgSx9W/scene.splinecode"></spline-viewer>
+        <div class="tag-container">
+            <div class="tag">
+                <div class="tag-line"></div>
+                <span>Machine Learning</span>
+            </div>
+            <div class="tag">
+                <span>Fullstack Development</span>
+                <div class="tag-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section light-section" id="about">
+        <div class="section-header">
+            <div>
+                <div class="section-number">01</div>
+                <div class="section-title">Building experiences</div>
+                <div></div>
+            </div>
+            <div>
+                <div class="section-content">
+                    My experience so far
+                </div>
+                <div class="work-container">
+                    <a href="https://www.animocabrands.com" target="_blank" rel="noopener noreferrer" class="experience-link">
+                    <div class="work-item">
+                        <img src="https://raw.githubusercontent.com/jethrozhao/jethrozhao.github.io/main/icon/animoca.jpg" 
+                             alt="Animoca Brands" 
+                             class="work-logo">
+                        <div>
+                            <h3 class="text-2xl font-bold">Data Science Intern</h3>
+                            <div class="text-xl mt-2">Animoca Brands Limited</div>
+                            <div class="text-sm opacity-70 mt-2">June 2024 - August 2024</div>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="https://clairesplacefoundation.org/" target="_blank" rel="noopener noreferrer" class="experience-link">
+                    <div class="work-item">
+                        <img src="https://raw.githubusercontent.com/jethrozhao/jethrozhao.github.io/main/icon/claires%20place.png" 
+                             alt="Claire's Place" 
+                             class="work-logo">
+                        <div>
+                            <h3 class="text-2xl font-bold">Data Analyst Intern</h3>
+                            <div class="text-xl mt-2">Claire's Place Foundation</div>
+                            <div class="text-sm opacity-70 mt-2">August 2023 - December 2023</div>
+                        </div>
+                    </div>
+                    </a>
+        
+                    <a href="https://www.nvt.com.hk/" target="_blank" rel="noopener noreferrer" class="experience-link">
+                    <div class="work-item">
+                        <img src="https://raw.githubusercontent.com/jethrozhao/jethrozhao.github.io/main/icon/new%20vision%20tech.jpeg" 
+                             alt="New Vision" 
+                             class="work-logo">
+                        <div>
+                            <h3 class="text-2xl font-bold">Software Engineering Intern</h3>
+                            <div class="text-xl mt-2">New Vision Asset Management Limited</div>
+                            <div class="text-sm opacity-70 mt-2">June 2023 - August 2023</div>
+                        </div>
+                    </div>
+                    </a>
+        
+                    <a href="https://www.scmp.com/" target="_blank" rel="noopener noreferrer" class="experience-link">
+                    <div class="work-item">
+                        <img src="https://raw.githubusercontent.com/jethrozhao/jethrozhao.github.io/main/icon/scmp.jpg" 
+                             alt="SCMP" 
+                             class="work-logo">
+                        <div>
+                            <h3 class="text-2xl font-bold">Junior Reporter & Social Media Manager</h3>
+                            <div class="text-xl mt-2">South China Morning Post</div>
+                            <div class="text-sm opacity-70 mt-2">June 2021 - July 2021</div>
+                        </div>
+                    </div>
                     </a>
                 </div>
+                <!-- <div class="section-subcontent">
+                    Whether It's Business Analytics, Computer Vision, Or Natural Language Processing
+                </div> -->
             </div>
-            <p>Hey there 👋 I'm Jethro, I'm a current sophomore studying AI for Business at the University of Southern California. </p>
-            <p>I'm interested in AI & ML applications in fashion, finance, and sports analytics to create value and generate impact.</p>
-            <div class="social-links">
-                <a href="https://github.com/jethrozhao" target="_blank" rel="noopener noreferrer">
-                    <svg class="icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                </a>
-                <a href="https://linkedin.com/in/jethro-zhao" target="_blank" rel="noopener noreferrer">
-                    <svg class="icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </a>
-                <a href="mailto:xiaoyaoj@usc.edu">
-                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                </a>
-                <a href="https://devpost.com/jethrozhao" target="_blank" rel="noopener noreferrer">
-                    <svg class="icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.002 1.61L0 12.004L6.002 22.39h11.996L24 12.004L17.998 1.61H6.002zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31c0 4.436-3.21 6.302-6.456 6.302H7.595V5.694zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861c0-2.311-1.216-3.853-3.862-3.853H10.112z"/>
-                    </svg>
-                </a>
-            </div>
-        </section>
+        </div>
 
-        <section id="experience">
-            <h2>Experience</h2>
-            <a href="https://www.animocabrands.com" target="_blank" rel="noopener noreferrer" class="experience-link">
-            <div class="experience-item">
-                <img src="https://raw.githubusercontent.com/jethrozhao/jethrozhao.github.io/main/icon/animoca.jpg" alt="Animoca Brands logo" class="experience-logo">
-                <div class="experience-details">
-                    <h3 class="experience-title">Data Science Intern</h3>
-                    <p class="experience-company">Animoca Brands Limited</p>
-                </div>
-                <div class="experience-period">June 2024 - August 2024</div>
-            </div> 
-            </a>
-            <a href="https://clairesplacefoundation.org/" target="_blank" rel="noopener noreferrer" class="experience-link">
-            <div class="experience-item">
-                <img src="https://raw.githubusercontent.com/jethrozhao/jethrozhao.github.io/main/icon/claires%20place.png" alt="Claires Place logo" class="experience-logo">
-                <div class="experience-details">
-                    <h3 class="experience-title">Data Analyst Intern</h3>
-                    <p class="experience-company">Claire's Place Foundation</p>
-                </div>
-                <div class="experience-period">August 2023 - December 2023</div>
+        <!-- <div class="gallery">
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/400" alt="AI Work" class="gallery-image">
             </div>
-            </a>
-            <a href="https://www.nvt.com.hk/" target="_blank" rel="noopener noreferrer" class="experience-link">
-            <div class="experience-item">
-                <img src="https://raw.githubusercontent.com/jethrozhao/jethrozhao.github.io/main/icon/new%20vision%20tech.jpeg" alt="New Vision Asset Management logo" class="experience-logo">
-                <div class="experience-details">
-                    <h3 class="experience-title">AI Software Intern</h3>
-                    <p class="experience-company">New Vision Asset Management Limited</p>
-                </div>
-                <div class="experience-period">June 2023 - August 2023</div>
+            <div class="gallery-item wide">
+                <img src="/api/placeholder/800/400" alt="Data Science" class="gallery-image">
             </div>
-            </a>
-            <a href="https://www.scmp.com/" target="_blank" rel="noopener noreferrer" class="experience-link">
-            <div class="experience-item">
-                <img src="https://raw.githubusercontent.com/jethrozhao/jethrozhao.github.io/main/icon/scmp.jpg" alt="South China Morning Post logo" class="experience-logo">
-                <div class="experience-details">
-                    <h3 class="experience-title">Junior Reporter & Social Media Manager</h3>
-                    <p class="experience-company">South China Morning Post</p>
-                </div>
-                <div class="experience-period">June 2021 - July 2021</div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/400" alt="Machine Learning" class="gallery-image">
             </div>
-            </a>
-        </section>
+        </div> -->
+    </section> 
 
-
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="card">
-                <h3>Technical Skills</h3>
-                <div class="skills-list">
-                    <span class="skill-item">Python</span>
-                    <span class="skill-item">Java</span>
-                    <span class="skill-item">C++</span>
-                    <span class="skill-item">SQL</span>
-                    <span class="skill-item">Pandas</span>
-                    <span class="skill-item">PyTorch</span>
-                    <span class="skill-item">Scikit-Learn</span>
-                    <span class="skill-item">Chainlit</span>
-                    <span class="skill-item">React</span>
-                    <span class="skill-item">Flask</span>
-                    <span class="skill-item">OpenAI</span>
-                    <span class="skill-item">Matplotlib</span>
-                    <span class="skill-item">AWS</span>
-                </div>
-            
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="section-header">
+            <div>
+                <div class="section-number">02</div>
+                <div class="section-title">Contact</div>
             </div>
-        </section>
-    </main>
+            <div>
+                <div class="section-content">
+                    Have more questions?
+                </div>
+                <div class="section-subcontent">
+                    Feel free to contact me!
+                </div>
+            </div>
+        </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Jethro Zhao. All rights reserved.</p>
+        <div class="contact-section">
+            <div class="contact-info">
+                <a href="mailto:xiaoyaoj@usc.edu">Email</a>
+                <a href="tel:+13102935738">Mobile</a>
+                <a href="https://github.com/jethrozhao">GitHub</a>
+                <a href="https://linkedin.com/in/jethro-zhao">LinkedIn</a>
+                <a href="https://devpost.com/jethrozhao">Devpost</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">JETHRO  |  赵小尧</div>
+        <div class="footer-content">
+            <div>© 2024 Jethro Zhao</div>
+            <div>Hong Kong  |  Los Angeles </div>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            // Highlight active nav item
-            const navLinks = document.querySelectorAll('nav a');
-            const sections = document.querySelectorAll('main section');
+        // Initialize GSAP
+        gsap.registerPlugin(ScrollTrigger);
 
-            window.addEventListener('scroll', () => {
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (pageYOffset >= sectionTop - 60) {
-                        current = section.getAttribute('id');
-                    }
-                });
+        // Loading Animation
+        let counter = 0;
+        const counterElement = document.querySelector('.counter');
+        const loader = document.querySelector('.loader');
 
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').slice(1) === current) {
-                        link.classList.add('active');
-                    }
+        const updateCounter = () => {
+            if (counter < 100) {
+                counter++;
+                counterElement.textContent = counter + '%';
+                setTimeout(updateCounter, 20);
+            } else {
+                loader.classList.add('hidden');
+                startPageAnimations();
+            }
+        }
+
+        updateCounter();
+
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a, .gallery-item').forEach(element => {
+            element.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            element.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const total = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrolled / total) * 100;
+            document.querySelector('.progress-bar').style.width = progress + '%';
+        });
+
+
+        // Page Animations
+        function startPageAnimations() {
+            // Hero Animations
+            gsap.to('.hero-title', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power3.out',
+                delay: 0.5
+            });
+
+            gsap.to('.tag-container', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power3.out',
+                delay: 0.7
+            });
+
+            // Section Animations
+            gsap.utils.toArray('.section').forEach(section => {
+                gsap.to(section, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 80%',
+                        end: 'top 20%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: 'power3.out'
                 });
             });
 
-            // Collapsible sections
-            const collapsibles = document.querySelectorAll('.collapsible');
-            collapsibles.forEach(item => {
-                item.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    const content = this.querySelector('.content');
-                    if (content.style.maxHeight) {
-                        content.style.maxHeight = null;
-                    } else {
-                        content.style.maxHeight = content.scrollHeight + 'px';
-                    }
+            // Gallery Animations
+            gsap.utils.toArray('.gallery-item').forEach((item, i) => {
+                gsap.to(item, {
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 85%',
+                        end: 'top 15%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    delay: i * 0.2,
+                    ease: 'power3.out'
                 });
+            });
+
+            // Footer Animation
+            gsap.to('.footer-logo', {
+                scrollTrigger: {
+                    trigger: '.footer',
+                    start: 'top 80%',
+                    end: 'top 20%',
+                    toggleActions: 'play none none reverse'
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power3.out'
+            });
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Image Loading
+        function loadImages() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                const src = img.getAttribute('src');
+                if (src.startsWith('/api/placeholder')) {
+                    const [width, height] = src.split('/').slice(-2);
+                    img.src = `https://picsum.photos/${width}/${height}`;
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadImages();
+            if (window.innerWidth <= 768) {
+                document.querySelector('.cursor').style.display = 'none';
+            }
+        });
+
+        // Disable cursor on mobile
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 768) {
+                document.querySelector('.cursor').style.display = 'none';
+            } else {
+                document.querySelector('.cursor').style.display = 'block';
+            }
+        });
+
+        // Parallax Effect
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+
+            gsap.to('.hero-title', {
+                x: moveX,
+                y: moveY,
+                duration: 1,
+                ease: 'power3.out'
             });
         });
     </script>
